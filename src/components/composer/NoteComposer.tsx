@@ -106,7 +106,7 @@ export function NoteComposer({ people, onSubmit }: Props) {
           </p>
         </div>
         <span className="rounded-full bg-note-mint px-3 py-1 text-xs font-semibold text-ink">
-          Pinning for Cohort {CURRENT_COHORT}
+          Cohort {CURRENT_COHORT}
         </span>
       </header>
 
