@@ -30,5 +30,16 @@ export function useNotes(): Note[] | undefined {
 
 export function useCreateNote() {
   const create = useMutation(api.notes.create);
-  return (input: NewNote) => create(input);
+  return (input: NewNote) =>
+    create({
+      recipientId: input.recipientId,
+      recipientName: input.recipientName,
+      recipientRole: input.recipientRole,
+      ...(input.recipientTrack ? { recipientTrack: input.recipientTrack } : {}),
+      message: input.message,
+      palette: input.palette,
+      format: input.format,
+      icon: input.icon,
+      authorName: input.authorName,
+    });
 }

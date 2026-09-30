@@ -13,21 +13,37 @@ export const create = mutation({
     recipientId: v.string(),
     recipientName: v.string(),
     recipientRole: v.union(
-      v.literal("mentee"), v.literal("mentor"), v.literal("alumni"), v.literal("founder")
+      v.literal("mentee"),
+      v.literal("mentor"),
+      v.literal("alumni"),
+      v.literal("founder"),
+      v.literal("intern"),
+      v.literal("fellow"),
+      v.literal("committee"),
     ),
     recipientTrack: v.optional(v.string()),
     message: v.string(),
     palette: v.union(
-      v.literal("plum"), v.literal("olive"), v.literal("cream"),
-      v.literal("ocean"), v.literal("rose"), v.literal("marigold"), v.literal("noir")
+      v.literal("plum"),
+      v.literal("olive"),
+      v.literal("cream"),
+      v.literal("ocean"),
+      v.literal("rose"),
+      v.literal("marigold"),
+      v.literal("noir"),
     ),
-    format: v.union(
-      v.literal("swatch"), v.literal("tin"), v.literal("print")
-    ),
+    format: v.union(v.literal("swatch"), v.literal("tin"), v.literal("print")),
     icon: v.union(
-      v.literal("flower"), v.literal("tulip"), v.literal("lotus"), v.literal("leaf"),
-      v.literal("plant"), v.literal("heart"), v.literal("star"), v.literal("sparkle"),
-      v.literal("butterfly"), v.literal("sun")
+      v.literal("flower"),
+      v.literal("tulip"),
+      v.literal("lotus"),
+      v.literal("leaf"),
+      v.literal("plant"),
+      v.literal("heart"),
+      v.literal("star"),
+      v.literal("sparkle"),
+      v.literal("butterfly"),
+      v.literal("sun"),
     ),
     authorName: v.union(v.string(), v.null()),
     // Note: no `reactions`, no `createdAt` argument. The client cannot set either.

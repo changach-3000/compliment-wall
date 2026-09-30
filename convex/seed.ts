@@ -81,7 +81,7 @@ const PEOPLE: { name: string; role: string; cohort?: number }[] = [
   { name: "George Mark Okumu", role: "mentee", cohort: 9 },
   { name: "Gwendolyn Amanda", role: "intern" },
   { name: "Bridgette Musango", role: "fellow" },
-  { name: "Joy Nyayieka", role: "Mentor" },
+  { name: "Joy Nyayieka", role: "mentor" },
   { name: "James Masara", role: "mentor" },
   { name: "Julia", role: "mentor" },
   { name: "Mark", role: "committee" },
@@ -112,7 +112,7 @@ const NOTES: {
   authorName: string | null;
 }[] = [
   {
-    recipientName: "Bridgette Musango", // must match a `name` in PEOPLE exactly
+    recipientName: "Bridgette Musango",
     recipientRole: "fellow",
     message: "Thank you for coming up with flowers for mentees!",
     palette: "plum",

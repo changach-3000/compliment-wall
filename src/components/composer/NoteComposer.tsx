@@ -5,7 +5,12 @@ import { PushPin } from "@phosphor-icons/react";
 import type { IconId, Note, NoteFormat, PaletteId, Person } from "@/types";
 import { CURRENT_COHORT } from "@/lib/config";
 import { RecipientCombobox } from "./RecipientCombobox";
-import { EmblemPicker, FormatPicker, LABEL_CLASS, PalettePicker } from "./Pickers";
+import {
+  EmblemPicker,
+  FormatPicker,
+  LABEL_CLASS,
+  PalettePicker,
+} from "./Pickers";
 import { NoteCard } from "../wall/noteCard";
 
 const MAX = 240;
@@ -27,6 +32,8 @@ export function NoteComposer({ people, onSubmit }: Props) {
   const [icon, setIcon] = useState<IconId>("flower");
   const [anonymous, setAnonymous] = useState(true);
   const [signer, setSigner] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const trimmed = message.trim();
 
@@ -56,12 +63,31 @@ export function NoteComposer({ people, onSubmit }: Props) {
     createdAt: new Date(),
   };
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!canSubmit) return;
-    onSubmit({ ...draft, id: crypto.randomUUID(), createdAt: new Date() });
-    setMessage("");
-    setRecipient(null);
+    if (!recipient || !canSubmit || submitting) return;
+
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      await onSubmit({
+        recipientId: recipient.id,
+        recipientName: recipient.name,
+        recipientRole: recipient.role,
+        recipientTrack: recipient.track,
+        message: trimmed,
+        palette,
+        format,
+        icon,
+        authorName: anonymous ? null : signer.trim(),
+      });
+      setMessage("");
+      setRecipient(null);
+    } catch {
+      setSubmitError("Couldn't pin your note. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -114,9 +140,14 @@ export function NoteComposer({ people, onSubmit }: Props) {
               placeholder="Write something kind… What made you appreciate them recently?"
               className={`${FIELD} h-32 resize-none`}
             />
-            <div id="message-help" className="mt-1 flex justify-between text-xs text-ink-muted">
+            <div
+              id="message-help"
+              className="mt-1 flex justify-between text-xs text-ink-muted"
+            >
               <span>Kind words build lifelong confidence.</span>
-              <span>{message.length} / {MAX}</span>
+              <span>
+                {message.length} / {MAX}
+              </span>
             </div>
           </div>
 
@@ -138,7 +169,9 @@ export function NoteComposer({ people, onSubmit }: Props) {
             </div>
             {!anonymous && (
               <>
-                <label htmlFor="signer" className="sr-only">Your name and cohort or role</label>
+                <label htmlFor="signer" className="sr-only">
+                  Your name and cohort or role
+                </label>
                 <input
                   id="signer"
                   value={signer}
@@ -168,16 +201,27 @@ export function NoteComposer({ people, onSubmit }: Props) {
           <div>
             <button
               type="submit"
-              disabled={!canSubmit}
+              disabled={!canSubmit || submitting}
               aria-describedby={problem ? "submit-hint" : undefined}
               className="flex w-full items-center justify-center gap-2 rounded-full bg-amber-deep px-6 py-3.5 font-bold text-white shadow-rest transition hover:brightness-110 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50"
             >
               <PushPin size={20} weight="fill" />
-              Pin to the wall
+              {submitting ? "Pinning…" : "Pin to the wall"}
             </button>
             {problem && (
-              <p id="submit-hint" className="mt-2 text-center text-xs text-ink-muted">
+              <p
+                id="submit-hint"
+                className="mt-2 text-center text-xs text-ink-muted"
+              >
                 {problem}
+              </p>
+            )}
+            {submitError && (
+              <p
+                role="alert"
+                className="mt-2 text-center text-xs font-semibold text-rose"
+              >
+                {submitError}
               </p>
             )}
           </div>
@@ -188,7 +232,10 @@ export function NoteComposer({ people, onSubmit }: Props) {
 }
 
 function SignOption({
-  checked, onSelect, title, hint,
+  checked,
+  onSelect,
+  title,
+  hint,
 }: {
   checked: boolean;
   onSelect: () => void;
