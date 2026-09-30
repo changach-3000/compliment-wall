@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PushPin } from "@phosphor-icons/react";
-import type { IconId, Note, NoteFormat, PaletteId, Person } from "@/types";
+import type { IconId, NewNote, Note, NoteFormat, PaletteId, Person } from "@/types";
 import { CURRENT_COHORT } from "@/lib/config";
 import { RecipientCombobox } from "./RecipientCombobox";
 import {
@@ -21,7 +21,7 @@ const FIELD =
 
 interface Props {
   people: Person[];
-  onSubmit: (note: Note) => void;
+  onSubmit: (note: NewNote) => Promise<void>;
 }
 
 export function NoteComposer({ people, onSubmit }: Props) {
