@@ -11,7 +11,9 @@ export type IconId =
   | "flower" | "tulip" | "lotus" | "leaf" | "plant"
   | "heart" | "star" | "sparkle" | "butterfly" | "sun";
 
-export type Role = "mentee" | "mentor" | "alumni" | "founder";
+export type Role =
+  | "mentee" | "mentor" | "alumni" | "founder"
+  | "intern" | "fellow" | "committee";
 
 export interface Person {
   id: string;

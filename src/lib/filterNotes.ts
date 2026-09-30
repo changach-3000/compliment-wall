@@ -19,7 +19,7 @@ interface FilterOptions {
 
 export function filterNotes(
   notes: Note[],
-  { filter, format, query }: FilterOptions
+  { filter, format, query }: FilterOptions,
 ): Note[] {
   const q = query.trim().toLowerCase();
 
@@ -27,14 +27,18 @@ export function filterNotes(
     if (format !== "any" && n.format !== format) return false;
     if (
       filter === "mentors" &&
-      n.recipientRole !== "mentor" &&
-      n.recipientRole !== "founder"
+      !["mentor", "founder", "fellow", "committee"].includes(n.recipientRole)
     )
       return false;
     if (filter === "mentees" && n.recipientRole !== "mentee") return false;
     if (!q) return true;
 
-    const haystack = [n.recipientName, n.message, n.recipientTrack, n.authorName]
+    const haystack = [
+      n.recipientName,
+      n.message,
+      n.recipientTrack,
+      n.authorName,
+    ]
       .filter(Boolean)
       .join(" ")
       .toLowerCase();

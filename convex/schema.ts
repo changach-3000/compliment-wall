@@ -7,7 +7,7 @@ const role = v.union(
   v.literal("alumni"),
   v.literal("intern"),
   v.literal("fellow"),
-  v.literal("commitee"),
+  v.literal("committee"),
   v.literal("founder")
 );
 const palette = v.union(

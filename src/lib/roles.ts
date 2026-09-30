@@ -5,4 +5,7 @@ export const ROLE_LABELS: Record<Role, string> = {
   mentor: "Mentor",
   alumni: "Alumni",
   founder: "Founder",
+  intern: "Intern",
+  fellow: "Fellow",
+  committee: "Committee",
 };

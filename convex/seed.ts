@@ -1,22 +1,30 @@
 import { mutation } from "./_generated/server";
-
-// Your schema only allows these four. Anything else gets mapped down to one of them.
-type SchemaRole = "mentee" | "mentor" | "alumni" | "founder";
-
-const ROLE_MAP: Record<string, SchemaRole> = {
-  mentee: "mentee",
-  mentor: "mentor",
-  alumni: "alumni",
-  founder: "founder",
-  intern: "mentee",
-  fellow: "mentor",
-  committee: "mentor",
-};
+type SchemaRole =
+  | "mentee"
+  | "mentor"
+  | "alumni"
+  | "founder"
+  | "intern"
+  | "fellow"
+  | "committee";
+const VALID_ROLES: SchemaRole[] = [
+  "mentee",
+  "mentor",
+  "alumni",
+  "founder",
+  "intern",
+  "fellow",
+  "committee",
+];
 
 function normalizeRole(raw: string): SchemaRole {
-  const mapped = ROLE_MAP[raw.toLowerCase()];
-  if (!mapped) throw new Error(`Unknown role "${raw}" — add it to ROLE_MAP in seed.ts.`);
-  return mapped;
+  const lower = raw.toLowerCase() as SchemaRole;
+  if (!VALID_ROLES.includes(lower)) {
+    throw new Error(
+      `Unknown role "${raw}" — check spelling against VALID_ROLES.`,
+    );
+  }
+  return lower;
 }
 
 const PEOPLE: { name: string; role: string; cohort?: number }[] = [
@@ -90,7 +98,17 @@ const NOTES: {
   message: string;
   palette: "plum" | "olive" | "cream" | "ocean" | "rose" | "marigold" | "noir";
   format: "swatch" | "tin" | "print";
-  icon: "flower" | "tulip" | "lotus" | "leaf" | "plant" | "heart" | "star" | "sparkle" | "butterfly" | "sun";
+  icon:
+    | "flower"
+    | "tulip"
+    | "lotus"
+    | "leaf"
+    | "plant"
+    | "heart"
+    | "star"
+    | "sparkle"
+    | "butterfly"
+    | "sun";
   authorName: string | null;
 }[] = [
   {
@@ -126,7 +144,9 @@ export const run = mutation({
     for (const n of NOTES) {
       const recipientId = idByName.get(n.recipientName);
       if (!recipientId) {
-        throw new Error(`No person named "${n.recipientName}" in PEOPLE — check the spelling.`);
+        throw new Error(
+          `No person named "${n.recipientName}" in PEOPLE — check the spelling.`,
+        );
       }
       await ctx.db.insert("notes", {
         recipientId,
