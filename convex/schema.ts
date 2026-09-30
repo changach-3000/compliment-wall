@@ -41,6 +41,6 @@ export default defineSchema({
     format,
     icon,
     authorName: v.union(v.string(), v.null()),
-    reactions: v.number(),
+    reactorIds: v.array(v.string()),
   }),
 });

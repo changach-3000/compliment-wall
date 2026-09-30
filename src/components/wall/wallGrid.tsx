@@ -1,7 +1,13 @@
 import type { Note } from "@/types";
 import { NoteCard } from "./noteCard";
 
-export function WallGrid({ notes }: { notes: Note[] }) {
+interface WallGridProps {
+  notes: Note[];
+  reactedIds: Set<string>;
+  onToggleReaction: (noteId: string) => void;
+}
+
+export function WallGrid({ notes, reactedIds, onToggleReaction }: WallGridProps) {
   return (
     <section
       aria-label="Compliment wall"
@@ -9,7 +15,12 @@ export function WallGrid({ notes }: { notes: Note[] }) {
     >
       {notes.map((note, i) => (
         <div key={note.id} className="mb-6 break-inside-avoid px-1 pt-3">
-          <NoteCard note={note} index={i} />
+          <NoteCard
+            note={note}
+            index={i}
+            reacted={reactedIds.has(note.id)}
+            onToggleReaction={onToggleReaction}
+          />
         </div>
       ))}
     </section>

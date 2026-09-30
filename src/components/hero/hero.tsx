@@ -9,7 +9,6 @@ import {
 import type { Note } from "@/types";
 import { NoteCard } from "@/components/wall/noteCard";
 import { Flower } from "./flower";
-import { Marquee } from "./marquee";
 import Image from "next/image";
 
 const NAV = [
@@ -242,9 +241,6 @@ export function Hero() {
           ))}
         </div>
       </div>
-
-      {/* tilted ribbon */}
-      {/* <Marquee className="mb-6 mt-10 -rotate-1 lg:absolute lg:-inset-x-4 lg:bottom-10 lg:m-0" /> */}
     </section>
   );
 }

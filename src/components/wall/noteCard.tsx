@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Flower as FlowerIcon } from "@phosphor-icons/react";
 import type { Note } from "@/types";
@@ -19,15 +18,18 @@ const SHADOW_LIFTED = "0 12px 28px rgba(41,37,36,0.10), 0 4px 10px rgba(41,37,36
 
 interface NoteCardProps {
   note: Note;
-  index?: number;    // only used to stagger the entrance
-  preview?: boolean; // composer preview: no hover, no reactions
-  hideFooter?: boolean; 
+  index?: number;
+  preview?: boolean;
+  hideFooter?: boolean;
+  reacted?: boolean;                    
+  onToggleReaction?: (noteId: string) => void;
 }
 
-export function NoteCard({ note, index = 0, preview = false, hideFooter = false }: NoteCardProps) {
-  const [reacted, setReacted] = useState(false);
+export function NoteCard({
+  note, index = 0, preview = false, hideFooter = false,
+  reacted = false, onToggleReaction,
+}: NoteCardProps) {
   const tilt = tiltForId(note.id);
-  const count = note.reactions + (reacted ? 1 : 0);
   const Face = FACES[note.format];
   const hasTape = note.format === "swatch" || note.format === "print";
   const lifted = { rotate: 0, y: -4, scale: 1.02, boxShadow: SHADOW_LIFTED };
@@ -44,16 +46,16 @@ export function NoteCard({ note, index = 0, preview = false, hideFooter = false 
         type="button"
         disabled={preview}
         aria-pressed={reacted}
-        aria-label={`Send a flower to ${note.recipientName}. ${count} so far`}
+        aria-label={`Send a flower to ${note.recipientName}. ${note.reactions} so far`}
         whileTap={{ scale: 1.25 }}
         transition={{ type: "spring", stiffness: 500, damping: 12 }}
-        onClick={() => setReacted((r) => !r)}
+        onClick={() => onToggleReaction?.(note.id)}
         className={`flex items-center gap-1 rounded-full bg-white px-2.5 py-1 font-semibold text-ink shadow-sm ${
           reacted ? "ring-2 ring-rose" : ""
         }`}
       >
         <FlowerIcon size={15} weight={reacted ? "fill" : "duotone"} className="text-rose" />
-        {count}
+        {note.reactions}
       </motion.button>
     </div>
   );
@@ -65,10 +67,7 @@ export function NoteCard({ note, index = 0, preview = false, hideFooter = false 
         aria-label={`Note for ${note.recipientName}`}
         initial={{ opacity: 0, y: 24, rotate: tilt }}
         animate={{
-          opacity: 1,
-          y: 0,
-          rotate: tilt,
-          boxShadow: SHADOW_REST,
+          opacity: 1, y: 0, rotate: tilt, boxShadow: SHADOW_REST,
           transition: { delay, type: "spring", stiffness: 260, damping: 22 },
         }}
         whileHover={preview ? undefined : lifted}
@@ -82,7 +81,7 @@ export function NoteCard({ note, index = 0, preview = false, hideFooter = false 
             className="absolute -top-2 left-1/2 z-10 h-4 w-14 -translate-x-1/2 rounded-[2px] bg-white/70 shadow-sm backdrop-blur-[2px]"
           />
         )}
-       <Face note={note} signature={signature} footer={hideFooter ? null : footer} />
+        <Face note={note} signature={signature} footer={hideFooter ? null : footer} />
       </motion.article>
     </div>
   );

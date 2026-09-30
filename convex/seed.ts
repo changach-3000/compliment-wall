@@ -158,7 +158,7 @@ export const run = mutation({
         format: n.format,
         icon: n.icon,
         authorName: n.authorName,
-        reactions: 0,
+        reactorIds: [],
       });
     }
   },
