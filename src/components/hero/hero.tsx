@@ -13,7 +13,7 @@ import Image from "next/image";
 
 const NAV = [
   { label: "Wall", href: "#wall" },
-  { label: "Find My Flowers", href: "#composer" },
+  { label: "Find My Flowers", href: "#wall" },
 ];
 
 interface HeroNote {
@@ -213,7 +213,7 @@ export function Hero() {
         {/* tagline + CTA */}
         <div className="relative z-10 mt-8 max-w-[15rem] lg:absolute lg:bottom-[24%] lg:left-8 lg:mt-0">
           <p className="text-[13px] font-italics leading-[1.15] text-ink">
-            An initiative by the 2026 KamiLimu towards consistent recognition of
+            An initiative by the 2026 KamiLimu Fellow towards consistent recognition of
             mentees &amp; progress, achievements and good deeds
           </p>
           <a

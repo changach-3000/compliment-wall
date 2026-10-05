@@ -1,1 +1,1 @@
-export const CURRENT_COHORT = 9;
+export const CURRENT_COHORT = 10;

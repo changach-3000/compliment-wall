@@ -29,56 +29,56 @@ function normalizeRole(raw: string): SchemaRole {
 
 const PEOPLE: { name: string; role: string; cohort?: number }[] = [
   { name: "Anthony Nguthiru", role: "mentor" },
-  { name: "Tamira Atieno", role: "mentee", cohort: 9 },
-  { name: "David Mungai Guchu", role: "mentee", cohort: 9 },
+  { name: "Tamira Atieno", role: "mentee", cohort: 10 },
+  { name: "David Mungai Guchu", role: "mentee", cohort: 10 },
   { name: "Sharon Chang'ach", role: "mentor" },
-  { name: "Kevin Mwaluko Wambua", role: "mentee", cohort: 9 },
-  { name: "Joy Melvine Okinyi", role: "mentee", cohort: 9 },
-  { name: "Ian Kiprotich", role: "mentee", cohort: 9 },
+  { name: "Kevin Mwaluko Wambua", role: "mentee", cohort: 10 },
+  { name: "Joy Melvine Okinyi", role: "mentee", cohort: 10 },
+  { name: "Ian Kiprotich", role: "mentee", cohort: 10 },
   { name: "Sherry Obare", role: "mentor" },
-  { name: "Joyline Njeri Wanjiru", role: "mentee", cohort: 9 },
-  { name: "Cherise Fasey Osambo", role: "mentee", cohort: 9 },
-  { name: "Jenas Jermaine Baraka Munene", role: "mentee", cohort: 9 },
+  { name: "Joyline Njeri Wanjiru", role: "mentee", cohort: 10 },
+  { name: "Cherise Fasey Osambo", role: "mentee", cohort: 10 },
+  { name: "Jenas Jermaine Baraka Munene", role: "mentee", cohort: 10 },
   { name: "Sheila Sharon", role: "mentor" },
-  { name: "Maxwell Muthee Gitahi", role: "mentee", cohort: 9 },
-  { name: "Catherine Atieno", role: "mentee", cohort: 9 },
+  { name: "Maxwell Muthee Gitahi", role: "mentee", cohort: 10 },
+  { name: "Catherine Atieno", role: "mentee", cohort: 10 },
   { name: "Sharleen Kariuki", role: "mentor" },
-  { name: "Joan Akello Ouma", role: "mentee", cohort: 9 },
-  { name: "Steve Lutali Wanangwe", role: "mentee", cohort: 9 },
-  { name: "Edwin Mwangi Muigai", role: "mentee", cohort: 9 },
+  { name: "Joan Akello Ouma", role: "mentee", cohort: 10 },
+  { name: "Steve Lutali Wanangwe", role: "mentee", cohort: 10 },
+  { name: "Edwin Mwangi Muigai", role: "mentee", cohort: 10 },
   { name: "Hansel Omondi", role: "mentor" },
-  { name: "Chris Waweru Gichohi", role: "mentee", cohort: 9 },
-  { name: "Christine Wangui Mugo", role: "mentee", cohort: 9 },
-  { name: "Mercy Mawia Musyoka", role: "mentee", cohort: 9 },
+  { name: "Chris Waweru Gichohi", role: "mentee", cohort: 10 },
+  { name: "Christine Wangui Mugo", role: "mentee", cohort: 10 },
+  { name: "Mercy Mawia Musyoka", role: "mentee", cohort: 10 },
   { name: "Augustine Chironga", role: "mentor" },
-  { name: "Eleanora Matalanga Nyakio", role: "mentee", cohort: 9 },
-  { name: "Addy Mutuiri", role: "mentee", cohort: 9 },
+  { name: "Eleanora Matalanga Nyakio", role: "mentee", cohort: 10 },
+  { name: "Addy Mutuiri", role: "mentee", cohort: 10 },
   { name: "Elaine Wambui", role: "mentor" },
-  { name: "Albert Ng'ang'a Kung'u", role: "mentee", cohort: 9 },
-  { name: "Tabitha Margaret Wangechi", role: "mentee", cohort: 9 },
-  { name: "Mutwa Maryanne Farida", role: "mentee", cohort: 9 },
+  { name: "Albert Ng'ang'a Kung'u", role: "mentee", cohort: 10 },
+  { name: "Tabitha Margaret Wangechi", role: "mentee", cohort: 10 },
+  { name: "Mutwa Maryanne Farida", role: "mentee", cohort: 10 },
   { name: "Godish Kimberly", role: "mentor" },
-  { name: "Bildad Gitonga", role: "mentee", cohort: 9 },
-  { name: "Stephen Gichonge Chacha", role: "mentee", cohort: 9 },
-  { name: "Esther Achieng Oyoo", role: "mentee", cohort: 9 },
+  { name: "Bildad Gitonga", role: "mentee", cohort: 10 },
+  { name: "Stephen Gichonge Chacha", role: "mentee", cohort: 10 },
+  { name: "Esther Achieng Oyoo", role: "mentee", cohort: 10 },
   { name: "Mozart Kandie", role: "mentor" },
-  { name: "Bernadette Wambui Karanja", role: "mentee", cohort: 9 },
-  { name: "Newton Murianki", role: "mentee", cohort: 9 },
+  { name: "Bernadette Wambui Karanja", role: "mentee", cohort: 10 },
+  { name: "Newton Murianki", role: "mentee", cohort: 10 },
   { name: "Peter Mulu", role: "mentor" },
-  { name: "Isaac Mwangi Njuguna", role: "mentee", cohort: 9 },
-  { name: "Mercyline Nyaboke", role: "mentee", cohort: 9 },
+  { name: "Isaac Mwangi Njuguna", role: "mentee", cohort: 10 },
+  { name: "Mercyline Nyaboke", role: "mentee", cohort: 10 },
   { name: "Angela Kinoro", role: "mentor" },
-  { name: "Michelle Tulah", role: "mentee", cohort: 9 },
-  { name: "Faith Mutheu Mutua", role: "mentee", cohort: 9 },
-  { name: "Lewis Gitau Ndung'u", role: "mentee", cohort: 9 },
+  { name: "Michelle Tulah", role: "mentee", cohort: 10 },
+  { name: "Faith Mutheu Mutua", role: "mentee", cohort: 10 },
+  { name: "Lewis Gitau Ndung'u", role: "mentee", cohort: 10 },
   { name: "Ryan Kyaka", role: "mentor" },
-  { name: "Joy Mbugua", role: "mentee", cohort: 9 },
-  { name: "Diana Awino Njeri Achola", role: "mentee", cohort: 9 },
-  { name: "Gerald Muteru Wangome", role: "mentee", cohort: 9 },
+  { name: "Joy Mbugua", role: "mentee", cohort: 10 },
+  { name: "Diana Awino Njeri Achola", role: "mentee", cohort: 10 },
+  { name: "Gerald Muteru Wangome", role: "mentee", cohort: 10 },
   { name: "Fidel Otieno", role: "mentor" },
-  { name: "Violet Atieno Onyango", role: "mentee", cohort: 9 },
-  { name: "Nancy Wangare", role: "mentee", cohort: 9 },
-  { name: "George Mark Okumu", role: "mentee", cohort: 9 },
+  { name: "Violet Atieno Onyango", role: "mentee", cohort: 10 },
+  { name: "Nancy Wangare", role: "mentee", cohort: 10 },
+  { name: "George Mark Okumu", role: "mentee", cohort: 10 },
   { name: "Gwendolyn Amanda", role: "intern" },
   { name: "Bridgette Musango", role: "fellow" },
   { name: "Joy Nyayieka", role: "mentor" },
@@ -122,31 +122,81 @@ const NOTES: {
   },
 ];
 
+// export const run = mutation({
+//   args: {},
+//   handler: async (ctx) => {
+//     const already = await ctx.db.query("people").first();
+//     if (already) {
+//       console.log("Already seeded, skipping.");
+//       return;
+//     }
+
+//     const idByName = new Map<string, string>();
+//     for (const p of PEOPLE) {
+//       const id = await ctx.db.insert("people", {
+//         name: p.name,
+//         role: normalizeRole(p.role),
+//         cohort: p.cohort,
+//       });
+//       idByName.set(p.name, id);
+//     }
+
+//     for (const n of NOTES) {
+//       const recipientId = idByName.get(n.recipientName);
+//       if (!recipientId) {
+//         throw new Error(
+//           `No person named "${n.recipientName}" in PEOPLE — check the spelling.`,
+//         );
+//       }
+//       await ctx.db.insert("notes", {
+//         recipientId,
+//         recipientName: n.recipientName,
+//         recipientRole: normalizeRole(n.recipientRole),
+//         ...(n.recipientTrack ? { recipientTrack: n.recipientTrack } : {}),
+//         message: n.message,
+//         palette: n.palette,
+//         format: n.format,
+//         icon: n.icon,
+//         authorName: n.authorName,
+//         reactorIds: [],
+//       });
+//     }
+//   },
+// });
+
 export const run = mutation({
   args: {},
   handler: async (ctx) => {
-    const already = await ctx.db.query("people").first();
-    if (already) {
-      console.log("Already seeded, skipping.");
-      return;
-    }
+    // PEOPLE: always sync. New names get inserted, existing ones get their role/cohort updated.
+    const existingPeople = await ctx.db.query("people").collect();
+    const existingByName = new Map(existingPeople.map((p) => [p.name, p]));
 
     const idByName = new Map<string, string>();
     for (const p of PEOPLE) {
-      const id = await ctx.db.insert("people", {
-        name: p.name,
-        role: normalizeRole(p.role),
-        cohort: p.cohort,
-      });
-      idByName.set(p.name, id);
+      const normalizedRole = normalizeRole(p.role);
+      const existing = existingByName.get(p.name);
+
+      if (existing) {
+        await ctx.db.patch(existing._id, { role: normalizedRole, cohort: p.cohort });
+        idByName.set(p.name, existing._id);
+      } else {
+        const id = await ctx.db.insert("people", { name: p.name, role: normalizedRole, cohort: p.cohort });
+        idByName.set(p.name, id);
+      }
+    }
+
+    // NOTES: only seed once. Past this point, notes are real content people wrote,
+    // not sample data, so a reseed should never touch them.
+    const noteCount = (await ctx.db.query("notes").collect()).length;
+    if (noteCount > 0) {
+      console.log(`Skipping note seeding — ${noteCount} notes already exist.`);
+      return;
     }
 
     for (const n of NOTES) {
       const recipientId = idByName.get(n.recipientName);
       if (!recipientId) {
-        throw new Error(
-          `No person named "${n.recipientName}" in PEOPLE — check the spelling.`,
-        );
+        throw new Error(`No person named "${n.recipientName}" in PEOPLE — check the spelling.`);
       }
       await ctx.db.insert("notes", {
         recipientId,
